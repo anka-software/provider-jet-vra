@@ -19,6 +19,7 @@ package clients
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 	"github.com/pkg/errors"
@@ -27,7 +28,7 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/terraform"
 
-	"github.com/crossplane-contrib/provider-jet-template/apis/v1alpha1"
+	"github.com/crossplane-contrib/provider-jet-vra/apis/v1alpha1"
 )
 
 const (
@@ -36,7 +37,15 @@ const (
 	errGetProviderConfig    = "cannot get referenced ProviderConfig"
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
-	errUnmarshalCredentials = "cannot unmarshal template credentials as JSON"
+	errUnmarshalCredentials = "cannot unmarshal vra credentials as JSON"
+)
+
+const (
+	keyUrl          = "url"
+	keyRefreshToken = "refresh_token"
+
+	envUrl          = "VRA_URL"
+	envRefreshToken = "VRA_REFRESH_TOKEN"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -69,8 +78,8 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		if err != nil {
 			return ps, errors.Wrap(err, errExtractCredentials)
 		}
-		templateCreds := map[string]string{}
-		if err := json.Unmarshal(data, &templateCreds); err != nil {
+		vraCreds := map[string]string{}
+		if err := json.Unmarshal(data, &vraCreds); err != nil {
 			return ps, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
@@ -79,14 +88,27 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		// credentials via the environment variables. You should specify
 		// credentials via the Terraform main.tf.json instead.
 		/*ps.Env = []string{
-			fmt.Sprintf("%s=%s", "HASHICUPS_USERNAME", templateCreds["username"]),
-			fmt.Sprintf("%s=%s", "HASHICUPS_PASSWORD", templateCreds["password"]),
+			fmt.Sprintf("%s=%s", "HASHICUPS_USERNAME", vraCreds["username"]),
+			fmt.Sprintf("%s=%s", "HASHICUPS_PASSWORD", vraCreds["password"]),
 		}*/
 		// set credentials in Terraform provider configuration
 		/*ps.Configuration = map[string]interface{}{
-			"username": templateCreds["username"],
-			"password": templateCreds["password"],
+			"username": vraCreds["username"],
+			"password": vraCreds["password"],
 		}*/
+
+		ps.Configuration = map[string]interface{}{}
+		if v, ok := vraCreds[keyUrl]; ok {
+			ps.Configuration[keyUrl] = v
+		}
+		if v, ok := vraCreds[keyRefreshToken]; ok {
+			ps.Configuration[keyRefreshToken] = v
+		}
+		// set environment variables for sensitive provider configuration
+		ps.Env = []string{
+			fmt.Sprintf("%s=%s", envUrl, vraCreds[keyRefreshToken]),
+			fmt.Sprintf("%s=%s", envRefreshToken, vraCreds[keyRefreshToken]),
+		}
 		return ps, nil
 	}
 }

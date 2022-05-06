@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: resources.null.template.jet.crossplane.io
+  name: deployments.deployment.vra.jet.crossplane.io
 spec:
-  group: null.template.jet.crossplane.io
+  group: deployment.vra.jet.crossplane.io
   names:
     categories:
     - crossplane
     - managed
-    - templatejet
-    kind: Resource
-    listKind: ResourceList
-    plural: resources
-    singular: resource
+    - vrajet
+    kind: Deployment
+    listKind: DeploymentList
+    plural: deployments
+    singular: deployment
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Resource is the Schema for the Resources API
+        description: Deployment is the Schema for the Deployments API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -50,7 +50,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ResourceSpec defines the desired state of Resource
+            description: DeploymentSpec defines the desired state of Deployment
             properties:
               deletionPolicy:
                 default: Delete
@@ -63,13 +63,38 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  triggers:
+                  blueprintContent:
+                    type: string
+                  blueprintId:
+                    type: string
+                  blueprintVersion:
+                    type: string
+                  catalogItemId:
+                    type: string
+                  catalogItemVersion:
+                    type: string
+                  description:
+                    type: string
+                  expandLastRequest:
+                    type: boolean
+                  expandProject:
+                    type: boolean
+                  expandResources:
+                    type: boolean
+                  inputs:
                     additionalProperties:
                       type: string
-                    description: A map of arbitrary strings that, when changed, will
-                      force the null resource to be replaced, re-running any associated
-                      provisioners.
+                    description: Inputs provided by the user. For inputs including
+                      those with default values, refer to inputs_including_defaults.
                     type: object
+                  leaseExpireAt:
+                    type: string
+                  owner:
+                    type: string
+                  projectId:
+                    type: string
+                required:
+                - projectId
                 type: object
               providerConfigRef:
                 default:
@@ -168,11 +193,162 @@ spec:
             - forProvider
             type: object
           status:
-            description: ResourceStatus defines the observed state of Resource.
+            description: DeploymentStatus defines the observed state of Deployment.
             properties:
               atProvider:
                 properties:
+                  createdAt:
+                    type: string
+                  createdBy:
+                    type: string
+                  expense:
+                    items:
+                      properties:
+                        additionalExpense:
+                          type: number
+                        code:
+                          type: string
+                        computeExpense:
+                          type: number
+                        lastUpdateTime:
+                          type: string
+                        message:
+                          type: string
+                        networkExpense:
+                          type: number
+                        storageExpense:
+                          type: number
+                        totalExpense:
+                          type: number
+                        unit:
+                          type: string
+                      type: object
+                    type: array
                   id:
+                    type: string
+                  inputsIncludingDefaults:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  lastRequest:
+                    items:
+                      properties:
+                        actionId:
+                          type: string
+                        approvedAt:
+                          type: string
+                        blueprintId:
+                          type: string
+                        cancelable:
+                          type: boolean
+                        catalogItemId:
+                          type: string
+                        completedAt:
+                          type: string
+                        completedTasks:
+                          type: number
+                        createdAt:
+                          type: string
+                        details:
+                          type: string
+                        dismissed:
+                          type: boolean
+                        id:
+                          type: string
+                        initializedAt:
+                          type: string
+                        inputs:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        name:
+                          type: string
+                        outputs:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        requestedBy:
+                          type: string
+                        resourceIds:
+                          items:
+                            type: string
+                          type: array
+                        status:
+                          type: string
+                        totalTasks:
+                          type: number
+                        updatedAt:
+                          type: string
+                      type: object
+                    type: array
+                  lastUpdatedAt:
+                    type: string
+                  lastUpdatedBy:
+                    type: string
+                  orgId:
+                    type: string
+                  project:
+                    items:
+                      properties:
+                        description:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        version:
+                          type: string
+                      type: object
+                    type: array
+                  resources:
+                    items:
+                      properties:
+                        createdAt:
+                          type: string
+                        dependsOn:
+                          items:
+                            type: string
+                          type: array
+                        description:
+                          type: string
+                        expense:
+                          items:
+                            properties:
+                              additionalExpense:
+                                type: number
+                              code:
+                                type: string
+                              computeExpense:
+                                type: number
+                              lastUpdateTime:
+                                type: string
+                              message:
+                                type: string
+                              networkExpense:
+                                type: number
+                              storageExpense:
+                                type: number
+                              totalExpense:
+                                type: number
+                              unit:
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        propertiesJson:
+                          type: string
+                        state:
+                          type: string
+                        syncStatus:
+                          type: string
+                        type:
+                          type: string
+                      type: object
+                    type: array
+                  status:
                     type: string
                 type: object
               conditions:

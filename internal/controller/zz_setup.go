@@ -21,15 +21,15 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
-	resource "github.com/crossplane-contrib/provider-jet-template/internal/controller/null/resource"
-	providerconfig "github.com/crossplane-contrib/provider-jet-template/internal/controller/providerconfig"
+	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
+	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		deployment.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
