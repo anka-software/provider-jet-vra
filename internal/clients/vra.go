@@ -83,20 +83,6 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 			return ps, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
-		// set environment variables for sensitive provider configuration
-		// Deprecated: In shared gRPC mode we do not support injecting
-		// credentials via the environment variables. You should specify
-		// credentials via the Terraform main.tf.json instead.
-		/*ps.Env = []string{
-			fmt.Sprintf("%s=%s", "HASHICUPS_USERNAME", vraCreds["username"]),
-			fmt.Sprintf("%s=%s", "HASHICUPS_PASSWORD", vraCreds["password"]),
-		}*/
-		// set credentials in Terraform provider configuration
-		/*ps.Configuration = map[string]interface{}{
-			"username": vraCreds["username"],
-			"password": vraCreds["password"],
-		}*/
-
 		ps.Configuration = map[string]interface{}{}
 		if v, ok := vraCreds[keyUrl]; ok {
 			ps.Configuration[keyUrl] = v
@@ -106,7 +92,7 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 		// set environment variables for sensitive provider configuration
 		ps.Env = []string{
-			fmt.Sprintf("%s=%s", envUrl, vraCreds[keyRefreshToken]),
+			fmt.Sprintf("%s=%s", envUrl, vraCreds[keyUrl]),
 			fmt.Sprintf("%s=%s", envRefreshToken, vraCreds[keyRefreshToken]),
 		}
 		return ps, nil

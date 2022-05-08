@@ -34,6 +34,12 @@ const (
 //go:embed schema.json
 var providerSchema string
 
+var IncludedResources = []string{
+	"vra_deployment$",
+}
+
+var skipList = []string{}
+
 // GetProvider returns provider configuration
 func GetProvider() *tjconfig.Provider {
 	defaultResourceFn := func(name string, terraformResource *schema.Resource, opts ...tjconfig.ResourceOption) *tjconfig.Resource {
@@ -44,10 +50,11 @@ func GetProvider() *tjconfig.Provider {
 	}
 
 	pc := tjconfig.NewProviderWithSchema([]byte(providerSchema), resourcePrefix, modulePath,
+		tjconfig.WithShortName("vrajet"),
+		tjconfig.WithRootGroup("vra.jet.crossplane.io"),
 		tjconfig.WithDefaultResourceFn(defaultResourceFn),
-		tjconfig.WithIncludeList([]string{
-			"vra_deployment$",
-		}))
+		tjconfig.WithIncludeList(IncludedResources),
+		tjconfig.WithSkipList(skipList))
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions

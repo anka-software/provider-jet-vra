@@ -87,6 +87,9 @@ type DeploymentParameters struct {
 	// +kubebuilder:validation:Optional
 	LeaseExpireAt *string `json:"leaseExpireAt,omitempty" tf:"lease_expire_at,omitempty"`
 
+	// +kubebuilder:validation:Required
+	Name *string `json:"name" tf:"name,omitempty"`
+
 	// +kubebuilder:validation:Optional
 	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
 

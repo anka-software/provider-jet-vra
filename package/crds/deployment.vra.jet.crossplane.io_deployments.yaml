@@ -89,11 +89,14 @@ spec:
                     type: object
                   leaseExpireAt:
                     type: string
+                  name:
+                    type: string
                   owner:
                     type: string
                   projectId:
                     type: string
                 required:
+                - name
                 - projectId
                 type: object
               providerConfigRef:
