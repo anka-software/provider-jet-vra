@@ -34,10 +34,12 @@ const (
 //go:embed schema.json
 var providerSchema string
 
+// IncludedResources s
 var IncludedResources = []string{
 	"vra_deployment$",
 }
 
+// skipList
 var skipList = []string{}
 
 // GetProvider returns provider configuration

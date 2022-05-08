@@ -41,10 +41,10 @@ const (
 )
 
 const (
-	keyUrl          = "url"
+	keyURL          = "url"
 	keyRefreshToken = "refresh_token"
 
-	envUrl          = "VRA_URL"
+	envURL          = "VRA_URL"
 	envRefreshToken = "VRA_REFRESH_TOKEN"
 )
 
@@ -84,15 +84,15 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 
 		ps.Configuration = map[string]interface{}{}
-		if v, ok := vraCreds[keyUrl]; ok {
-			ps.Configuration[keyUrl] = v
+		if v, ok := vraCreds[keyURL]; ok {
+			ps.Configuration[keyURL] = v
 		}
 		if v, ok := vraCreds[keyRefreshToken]; ok {
 			ps.Configuration[keyRefreshToken] = v
 		}
 		// set environment variables for sensitive provider configuration
 		ps.Env = []string{
-			fmt.Sprintf("%s=%s", envUrl, vraCreds[keyUrl]),
+			fmt.Sprintf("%s=%s", envURL, vraCreds[keyURL]),
 			fmt.Sprintf("%s=%s", envRefreshToken, vraCreds[keyRefreshToken]),
 		}
 		return ps, nil

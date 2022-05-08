@@ -10,7 +10,7 @@ export TERRAFORM_PROVIDER_SOURCE := vmware/vra
 export TERRAFORM_PROVIDER_VERSION := 0.5.1
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-vra
 export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://releases.hashicorp.com/terraform-provider-vra/0.5.1
-export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-vra_v0.5.1_x1
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-vra_v0.5.1
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
