@@ -1,0 +1,14 @@
+apiVersion: blueprintversion.vra.jet.crossplane.io/v1alpha1
+kind: Version
+metadata:
+  name: vra-blueprintversion-test-01
+spec:
+  forProvider:
+    changeLog: "test1"
+    description: "test2"
+    release: False
+    version: "1"
+    blueprintId: 49ab285d-2592-430b-96a2-1260f1d0117f
+
+  providerConfigRef:
+    name: default

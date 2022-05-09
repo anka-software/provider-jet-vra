@@ -1,10 +1,10 @@
 apiVersion: deployment.vra.jet.crossplane.io/v1alpha1
 kind: Deployment
 metadata:
-  name: vra-deployment-ankasoft-1
+  name: vra-deployment-ankasoft-3
 spec:
   forProvider:
-    name: vra-deployment-ankasoft-1
+    name: vra-deployment-ankasoft-3
     description: "Managed with Crossplane vRA Provider"
 
     catalogItemId: cd5c57f5-1cfd-356e-97f3-6e81b0068ced

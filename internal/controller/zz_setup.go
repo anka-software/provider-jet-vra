@@ -21,6 +21,8 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
+	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
+	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprintversion/version"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 )
@@ -29,6 +31,8 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		blueprint.Setup,
+		version.Setup,
 		deployment.Setup,
 		providerconfig.Setup,
 	} {
