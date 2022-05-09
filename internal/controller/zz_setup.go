@@ -22,7 +22,7 @@ import (
 	"github.com/crossplane/terrajet/pkg/controller"
 
 	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
-	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprintversion/version"
+	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/version"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 )

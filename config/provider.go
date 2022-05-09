@@ -24,7 +24,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
-	"github.com/crossplane-contrib/provider-jet-vra/config/blueprintversion"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 )
 
@@ -66,7 +65,6 @@ func GetProvider() *tjconfig.Provider {
 		// add custom config functions
 		deployment.Configure,
 		blueprint.Configure,
-		blueprintversion.Configure,
 	} {
 		configure(pc)
 	}

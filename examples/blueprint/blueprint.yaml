@@ -1,10 +1,10 @@
 apiVersion: blueprint.vra.jet.crossplane.io/v1alpha1
 kind: Blueprint
 metadata:
-  name: vra-blueprint-test-02
+  name: vra-blueprint-test-01
 spec:
   forProvider:
-    name: vra-blueprint-test-02
+    name: vra-blueprint-test-01
     description: "Managed by Crossplane vRA Jet provider"
 
     projectId: a24427ee-cae9-41c1-abcf-c88d99779e10
