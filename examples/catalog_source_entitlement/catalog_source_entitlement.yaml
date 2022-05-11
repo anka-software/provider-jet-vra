@@ -1,0 +1,12 @@
+apiVersion: catalogsourceentitlement.vra.jet.crossplane.io/v1alpha1
+kind: SourceEntitlement
+metadata:
+  name: vra-catalog-source-entitlement04
+spec:
+  forProvider:
+    catalogSourceId: f60b88ee-05e7-4fa0-a097-d7afa00c45cb #HC_SD_VMLinux
+    projectId: 1622eaa5-1fa6-4b67-9546-915173b1a570 #hc_sd_vm_windows
+
+
+  providerConfigRef:
+    name: default

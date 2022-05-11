@@ -10,7 +10,7 @@ spec:
     version: "1"
     
     blueprintIdRef:
-      name: vra-blueprint-test-01
+      name: vra-blueprint-test-06
 
   providerConfigRef:
     name: default
