@@ -23,6 +23,7 @@ import (
 
 	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
 	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/version"
+	sourceblueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceblueprint/sourceblueprint"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 )
@@ -33,6 +34,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		blueprint.Setup,
 		version.Setup,
+		sourceblueprint.Setup,
 		deployment.Setup,
 		providerconfig.Setup,
 	} {

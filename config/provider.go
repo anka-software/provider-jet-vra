@@ -24,6 +24,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
+	"github.com/crossplane-contrib/provider-jet-vra/config/catalogsourceblueprint"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 )
 
@@ -40,6 +41,7 @@ var IncludedResources = []string{
 	"vra_deployment$",
 	"vra_blueprint$",
 	"vra_blueprint_version$",
+	"vra_catalog_source_blueprint$",
 }
 
 // skipList
@@ -65,6 +67,7 @@ func GetProvider() *tjconfig.Provider {
 		// add custom config functions
 		deployment.Configure,
 		blueprint.Configure,
+		catalogsourceblueprint.Configure,
 	} {
 		configure(pc)
 	}
