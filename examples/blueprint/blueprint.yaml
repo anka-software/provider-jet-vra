@@ -7,7 +7,7 @@ spec:
     name: vra-blueprint-test-01
     description: "Managed by Crossplane vRA Jet provider"
 
-    projectId: a24427ee-cae9-41c1-abcf-c88d99779e10
+    projectId: 1622eaa5-1fa6-4b67-9546-915173b1a570
 
     content: "formatVersion: 1"
 
