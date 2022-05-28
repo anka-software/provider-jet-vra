@@ -26,7 +26,9 @@ import (
 	itementitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogitementitlement/itementitlement"
 	sourceblueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceblueprint/sourceblueprint"
 	sourceentitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceentitlement/sourceentitlement"
+	source "github.com/crossplane-contrib/provider-jet-vra/internal/controller/contentsource/source"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
+	project "github.com/crossplane-contrib/provider-jet-vra/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 )
 
@@ -39,7 +41,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		itementitlement.Setup,
 		sourceblueprint.Setup,
 		sourceentitlement.Setup,
+		source.Setup,
 		deployment.Setup,
+		project.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

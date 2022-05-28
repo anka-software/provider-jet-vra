@@ -26,7 +26,9 @@ import (
 	v1alpha1catalogitementitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogitementitlement/v1alpha1"
 	v1alpha1catalogsourceblueprint "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceblueprint/v1alpha1"
 	v1alpha1catalogsourceentitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceentitlement/v1alpha1"
+	v1alpha1contentsource "github.com/crossplane-contrib/provider-jet-vra/apis/contentsource/v1alpha1"
 	v1alpha1deployment "github.com/crossplane-contrib/provider-jet-vra/apis/deployment/v1alpha1"
+	v1alpha1project "github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1"
 	v1alpha1apis "github.com/crossplane-contrib/provider-jet-vra/apis/v1alpha1"
 )
 
@@ -37,7 +39,9 @@ func init() {
 		v1alpha1catalogitementitlement.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceblueprint.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceentitlement.SchemeBuilder.AddToScheme,
+		v1alpha1contentsource.SchemeBuilder.AddToScheme,
 		v1alpha1deployment.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 	)
 }
