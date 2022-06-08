@@ -5,7 +5,8 @@ metadata:
 spec:
   forProvider:
     name: vra-zone-test-01
-    
+    description: crossplane-test
+    regionId: xxxx
 
   providerConfigRef:
     name: default
