@@ -78,3 +78,4 @@ as the core Crossplane project.
 ## Licensing
 
 provider-jet-vra is under the Apache 2.0 license.
+

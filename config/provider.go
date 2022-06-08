@@ -29,6 +29,7 @@ import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
 	"github.com/crossplane-contrib/provider-jet-vra/config/content_source"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
+	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 )
 
 const (
@@ -48,6 +49,7 @@ var IncludedResources = []string{
 	"vra_catalog_source_blueprint$",
 	"vra_catalog_source_entitlement$",
 	"vra_content_source$",
+	"vra_project$",
 }
 
 // skipList
@@ -77,6 +79,7 @@ func GetProvider() *tjconfig.Provider {
 		catalog_source_blueprint.Configure,
 		catalog_source_entitlement.Configure,
 		content_source.Configure,
+		project.Configure,
 	} {
 		configure(pc)
 	}
