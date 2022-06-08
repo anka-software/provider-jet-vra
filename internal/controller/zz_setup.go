@@ -30,6 +30,7 @@ import (
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
 	project "github.com/crossplane-contrib/provider-jet-vra/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
+	zone "github.com/crossplane-contrib/provider-jet-vra/internal/controller/zone/zone"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
@@ -45,6 +46,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		deployment.Setup,
 		project.Setup,
 		providerconfig.Setup,
+		zone.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

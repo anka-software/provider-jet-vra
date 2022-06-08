@@ -1,4 +1,4 @@
-package catalog_source_blueprint
+package catalogsourceblueprint
 
 import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/common"
