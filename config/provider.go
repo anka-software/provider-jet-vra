@@ -31,6 +31,8 @@ import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_nsxt"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_gcp"
 )
 
 const (
@@ -52,6 +54,8 @@ var IncludedResources = []string{
 	"vra_content_source$",
 	"vra_project$",
 	"vra_network$",
+	"vra_cloud_account_nsxt$",
+	"vra_cloud_account_gcp$",
 }
 
 // skipList
@@ -83,6 +87,8 @@ func GetProvider() *tjconfig.Provider {
 		content_source.Configure,
 		project.Configure,
 		network.Configure,
+		cloud_account_nsxt.Configure,
+		cloud_account_gcp.Configure,
 	} {
 		configure(pc)
 	}
