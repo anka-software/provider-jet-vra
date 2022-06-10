@@ -1,0 +1,16 @@
+apiVersion: blueprint.vra.jet.crossplane.io/v1alpha1
+kind: Version
+metadata:
+  name: vra-blueprintversion-test-01
+spec:
+  forProvider:
+    changeLog: "deprecated"
+    description: "test2"
+    release: False
+    version: "1"
+    
+    blueprintIdRef:
+      name: vra-blueprint-test-01
+
+  providerConfigRef:
+    name: default

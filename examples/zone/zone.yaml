@@ -1,0 +1,12 @@
+apiVersion: zone.vra.jet.crossplane.io/v1alpha1
+kind: Zone
+metadata:
+  name: vra-zone-test-01
+spec:
+  forProvider:
+    name: vra-zone-test-01
+    description: crossplane-test
+    regionId: xxxx
+
+  providerConfigRef:
+    name: default
