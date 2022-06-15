@@ -21,6 +21,8 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
+	accountaws "github.com/crossplane-contrib/provider-jet-vra/internal/controller/aws/accountaws"
+	accountazure "github.com/crossplane-contrib/provider-jet-vra/internal/controller/azure/accountazure"
 	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
 	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/version"
 	itementitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogitementitlement/itementitlement"
@@ -30,10 +32,15 @@ import (
 	accountnsxt "github.com/crossplane-contrib/provider-jet-vra/internal/controller/cloudaccountnsxt/accountnsxt"
 	source "github.com/crossplane-contrib/provider-jet-vra/internal/controller/contentsource/source"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
+
+	profile "github.com/crossplane-contrib/provider-jet-vra/internal/controller/flavorprofile/profile"
+	balancer "github.com/crossplane-contrib/provider-jet-vra/internal/controller/loadbalancer/balancer"
+
 	machine "github.com/crossplane-contrib/provider-jet-vra/internal/controller/machine/machine"
 	iprange "github.com/crossplane-contrib/provider-jet-vra/internal/controller/network/iprange"
 	network "github.com/crossplane-contrib/provider-jet-vra/internal/controller/network/network"
 	profile "github.com/crossplane-contrib/provider-jet-vra/internal/controller/networkprofile/profile"
+
 	project "github.com/crossplane-contrib/provider-jet-vra/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 	zone "github.com/crossplane-contrib/provider-jet-vra/internal/controller/zone/zone"
@@ -43,6 +50,8 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		accountaws.Setup,
+		accountazure.Setup,
 		blueprint.Setup,
 		version.Setup,
 		itementitlement.Setup,
@@ -52,10 +61,16 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		accountnsxt.Setup,
 		source.Setup,
 		deployment.Setup,
+
+		profile.Setup,
+		profile.Setup,
+		balancer.Setup,
+
 		machine.Setup,
 		iprange.Setup,
 		network.Setup,
 		profile.Setup,
+
 		project.Setup,
 		providerconfig.Setup,
 		zone.Setup,

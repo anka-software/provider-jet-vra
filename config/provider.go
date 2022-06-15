@@ -30,6 +30,14 @@ import (
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
 
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAWS"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAzure"
+	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
+	"github.com/crossplane-contrib/provider-jet-vra/config/flavorProfile"
+	"github.com/crossplane-contrib/provider-jet-vra/config/imageProfile"
+	loadBalancer "github.com/crossplane-contrib/provider-jet-vra/config/loadbalancer"
+
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
@@ -41,6 +49,7 @@ import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/network"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_ip_range"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_profile"
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
@@ -72,6 +81,13 @@ var IncludedResources = []string{
 	"vra_network_profile$",
 
 	"vra_zone$",
+
+	"vra_cloud_account_aws$",
+	"vra_cloud_account_azure$",
+	"vra_flavor_profile$",
+	"vra_image_profile$",
+	"vra_load_balancer$",
+
 
 }
 
@@ -112,6 +128,14 @@ func GetProvider() *tjconfig.Provider {
 		network_profile.Configure,
 
 		zone.Configure,
+
+		cloudAccountAWS.Configure,
+		cloudAccountAzure.Configure,
+		flavorProfile.Configure,
+		imageProfile.Configure,
+		loadBalancer.Configure,
+
+
 
 	} {
 		configure(pc)
