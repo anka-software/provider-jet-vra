@@ -20,11 +20,18 @@ import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
 
+	catalog_item_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
+	catalog_source_blueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
+	catalog_source_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
+	content_source "github.com/crossplane-contrib/provider-jet-vra/config/content_source"
+
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
+	"github.com/crossplane-contrib/provider-jet-vra/config/project"
+	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
 
 const (
@@ -40,6 +47,12 @@ var IncludedResources = []string{
 	"vra_deployment$",
 	"vra_blueprint$",
 	"vra_blueprint_version$",
+	"vra_catalog_item_entitlement$",
+	"vra_catalog_source_blueprint$",
+	"vra_catalog_source_entitlement$",
+	"vra_content_source$",
+	"vra_project$",
+	"vra_zone$",
 }
 
 // skipList
@@ -65,6 +78,12 @@ func GetProvider() *tjconfig.Provider {
 		// add custom config functions
 		deployment.Configure,
 		blueprint.Configure,
+		catalog_item_entitlement.Configure,
+		catalog_source_blueprint.Configure,
+		catalog_source_entitlement.Configure,
+		content_source.Configure,
+		project.Configure,
+		zone.Configure,
 	} {
 		configure(pc)
 	}

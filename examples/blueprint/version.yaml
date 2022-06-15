@@ -4,7 +4,7 @@ metadata:
   name: vra-blueprintversion-test-01
 spec:
   forProvider:
-    changeLog: "test1"
+    changeLog: "deprecated"
     description: "test2"
     release: False
     version: "1"

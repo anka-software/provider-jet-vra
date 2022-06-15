@@ -1,0 +1,23 @@
+apiVersion: contentsource.vra.jet.crossplane.io/v1alpha1
+ kind: Source
+ metadata:
+   name: vracontentsourcetest01
+ spec:
+   forProvider:
+     name: "vracontentsourcetest01"
+     projectId: "1622eaa5-1fa6-4b67-9546-915173b1a570"
+
+     typeId: "com.github"
+     description: "Managed by Crossplane jet vRA Provider"
+
+     syncEnabled: False
+     config: 
+        - path: "blueprint01"
+          branch: "dev.yagmur"
+          repository: "https://github.com/anka-software/provider-jet-vra/tree/dev.yagmur"
+          contentType: "BLUEPRINT"
+          projectName: "HC_SD_VMWindows"
+          integrationId: "1622eaa5-1fa6-4b67-9546-915173b1a570"
+
+   providerConfigRef:
+     name: default  

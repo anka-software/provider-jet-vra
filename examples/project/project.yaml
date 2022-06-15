@@ -1,0 +1,33 @@
+apiVersion: project.vra.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: vra-project-test
+spec:
+  forProvider:
+    name: vra-project-test
+    description: "vra-project test terraform"
+    zoneAssignments:
+      - cpuLimit: 1024 
+        maxInstances: 2             
+        memoryLimitMb: 8192             
+        priority: 1              
+        storageLimitGb: 65536               
+        zoneId: "1"
+    administratorRoles:
+      - email: "test@test.com"
+        type: "user"
+    sharedResources: False
+
+  providerConfigRef:
+    name: default
+
+
+
+      #items:
+      #  - properties:
+      #      cpuLimit: 1024 
+      #      maxInstances: 2             
+      #      memoryLimitMb: 8192             
+      #      priority: 1              
+      #      storageLimitGb: 65536               
+      #      zoneId: 1
