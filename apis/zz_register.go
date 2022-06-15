@@ -28,10 +28,18 @@ import (
 	v1alpha1catalogitementitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogitementitlement/v1alpha1"
 	v1alpha1catalogsourceblueprint "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceblueprint/v1alpha1"
 	v1alpha1catalogsourceentitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceentitlement/v1alpha1"
+	v1alpha1cloudaccountgcp "github.com/crossplane-contrib/provider-jet-vra/apis/cloudaccountgcp/v1alpha1"
+	v1alpha1cloudaccountnsxt "github.com/crossplane-contrib/provider-jet-vra/apis/cloudaccountnsxt/v1alpha1"
 	v1alpha1contentsource "github.com/crossplane-contrib/provider-jet-vra/apis/contentsource/v1alpha1"
 	v1alpha1deployment "github.com/crossplane-contrib/provider-jet-vra/apis/deployment/v1alpha1"
+
 	v1alpha1flavorprofile "github.com/crossplane-contrib/provider-jet-vra/apis/flavorprofile/v1alpha1"
 	v1alpha1loadbalancer "github.com/crossplane-contrib/provider-jet-vra/apis/loadbalancer/v1alpha1"
+
+	v1alpha1machine "github.com/crossplane-contrib/provider-jet-vra/apis/machine/v1alpha1"
+	v1alpha1network "github.com/crossplane-contrib/provider-jet-vra/apis/network/v1alpha1"
+	v1alpha1networkprofile "github.com/crossplane-contrib/provider-jet-vra/apis/networkprofile/v1alpha1"
+
 	v1alpha1project "github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1"
 	v1alpha1apis "github.com/crossplane-contrib/provider-jet-vra/apis/v1alpha1"
 	v1alpha1zone "github.com/crossplane-contrib/provider-jet-vra/apis/zone/v1alpha1"
@@ -46,10 +54,18 @@ func init() {
 		v1alpha1catalogitementitlement.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceblueprint.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceentitlement.SchemeBuilder.AddToScheme,
+		v1alpha1cloudaccountgcp.SchemeBuilder.AddToScheme,
+		v1alpha1cloudaccountnsxt.SchemeBuilder.AddToScheme,
 		v1alpha1contentsource.SchemeBuilder.AddToScheme,
 		v1alpha1deployment.SchemeBuilder.AddToScheme,
+
 		v1alpha1flavorprofile.SchemeBuilder.AddToScheme,
 		v1alpha1loadbalancer.SchemeBuilder.AddToScheme,
+
+		v1alpha1machine.SchemeBuilder.AddToScheme,
+		v1alpha1network.SchemeBuilder.AddToScheme,
+		v1alpha1networkprofile.SchemeBuilder.AddToScheme,
+
 		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1alpha1zone.SchemeBuilder.AddToScheme,

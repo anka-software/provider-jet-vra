@@ -28,10 +28,19 @@ import (
 	itementitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogitementitlement/itementitlement"
 	sourceblueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceblueprint/sourceblueprint"
 	sourceentitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceentitlement/sourceentitlement"
+	accountgcp "github.com/crossplane-contrib/provider-jet-vra/internal/controller/cloudaccountgcp/accountgcp"
+	accountnsxt "github.com/crossplane-contrib/provider-jet-vra/internal/controller/cloudaccountnsxt/accountnsxt"
 	source "github.com/crossplane-contrib/provider-jet-vra/internal/controller/contentsource/source"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
+
 	profile "github.com/crossplane-contrib/provider-jet-vra/internal/controller/flavorprofile/profile"
 	balancer "github.com/crossplane-contrib/provider-jet-vra/internal/controller/loadbalancer/balancer"
+
+	machine "github.com/crossplane-contrib/provider-jet-vra/internal/controller/machine/machine"
+	iprange "github.com/crossplane-contrib/provider-jet-vra/internal/controller/network/iprange"
+	network "github.com/crossplane-contrib/provider-jet-vra/internal/controller/network/network"
+	profile "github.com/crossplane-contrib/provider-jet-vra/internal/controller/networkprofile/profile"
+
 	project "github.com/crossplane-contrib/provider-jet-vra/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 	zone "github.com/crossplane-contrib/provider-jet-vra/internal/controller/zone/zone"
@@ -48,11 +57,20 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		itementitlement.Setup,
 		sourceblueprint.Setup,
 		sourceentitlement.Setup,
+		accountgcp.Setup,
+		accountnsxt.Setup,
 		source.Setup,
 		deployment.Setup,
+
 		profile.Setup,
 		profile.Setup,
 		balancer.Setup,
+
+		machine.Setup,
+		iprange.Setup,
+		network.Setup,
+		profile.Setup,
+
 		project.Setup,
 		providerconfig.Setup,
 		zone.Setup,

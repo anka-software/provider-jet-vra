@@ -29,12 +29,27 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAWS"
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAzure"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/flavorProfile"
 	"github.com/crossplane-contrib/provider-jet-vra/config/imageProfile"
 	loadBalancer "github.com/crossplane-contrib/provider-jet-vra/config/loadbalancer"
+
+
+	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
+	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
+	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_gcp"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_nsxt"
+	"github.com/crossplane-contrib/provider-jet-vra/config/content_source"
+	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
+	"github.com/crossplane-contrib/provider-jet-vra/config/machine"
+	"github.com/crossplane-contrib/provider-jet-vra/config/network"
+	"github.com/crossplane-contrib/provider-jet-vra/config/network_ip_range"
+	"github.com/crossplane-contrib/provider-jet-vra/config/network_profile"
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
@@ -57,12 +72,23 @@ var IncludedResources = []string{
 	"vra_catalog_source_entitlement$",
 	"vra_content_source$",
 	"vra_project$",
+
+	"vra_network$",
+	"vra_cloud_account_nsxt$",
+	"vra_cloud_account_gcp$",
+	"vra_machine$",
+	"network_ip_range$",
+	"vra_network_profile$",
+
 	"vra_zone$",
+
 	"vra_cloud_account_aws$",
 	"vra_cloud_account_azure$",
 	"vra_flavor_profile$",
 	"vra_image_profile$",
 	"vra_load_balancer$",
+
+
 }
 
 // skipList
@@ -93,12 +119,24 @@ func GetProvider() *tjconfig.Provider {
 		catalog_source_entitlement.Configure,
 		content_source.Configure,
 		project.Configure,
+
+		network.Configure,
+		cloud_account_nsxt.Configure,
+		cloud_account_gcp.Configure,
+		machine.Configure,
+		network_ip_range.Configure,
+		network_profile.Configure,
+
 		zone.Configure,
+
 		cloudAccountAWS.Configure,
 		cloudAccountAzure.Configure,
 		flavorProfile.Configure,
 		imageProfile.Configure,
 		loadBalancer.Configure,
+
+
+
 	} {
 		configure(pc)
 	}
