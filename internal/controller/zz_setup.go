@@ -21,6 +21,8 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
+	accountaws "github.com/crossplane-contrib/provider-jet-vra/internal/controller/aws/accountaws"
+	accountazure "github.com/crossplane-contrib/provider-jet-vra/internal/controller/azure/accountazure"
 	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
 	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/version"
 	itementitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogitementitlement/itementitlement"
@@ -28,6 +30,8 @@ import (
 	sourceentitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogsourceentitlement/sourceentitlement"
 	source "github.com/crossplane-contrib/provider-jet-vra/internal/controller/contentsource/source"
 	deployment "github.com/crossplane-contrib/provider-jet-vra/internal/controller/deployment/deployment"
+	profile "github.com/crossplane-contrib/provider-jet-vra/internal/controller/flavorprofile/profile"
+	balancer "github.com/crossplane-contrib/provider-jet-vra/internal/controller/loadbalancer/balancer"
 	project "github.com/crossplane-contrib/provider-jet-vra/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-vra/internal/controller/providerconfig"
 	zone "github.com/crossplane-contrib/provider-jet-vra/internal/controller/zone/zone"
@@ -37,6 +41,8 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		accountaws.Setup,
+		accountazure.Setup,
 		blueprint.Setup,
 		version.Setup,
 		itementitlement.Setup,
@@ -44,6 +50,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		sourceentitlement.Setup,
 		source.Setup,
 		deployment.Setup,
+		profile.Setup,
+		profile.Setup,
+		balancer.Setup,
 		project.Setup,
 		providerconfig.Setup,
 		zone.Setup,

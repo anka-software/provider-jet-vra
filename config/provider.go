@@ -29,7 +29,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAWS"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAzure"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
+	"github.com/crossplane-contrib/provider-jet-vra/config/flavorProfile"
+	"github.com/crossplane-contrib/provider-jet-vra/config/imageProfile"
+	loadBalancer "github.com/crossplane-contrib/provider-jet-vra/config/loadbalancer"
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
@@ -53,6 +58,11 @@ var IncludedResources = []string{
 	"vra_content_source$",
 	"vra_project$",
 	"vra_zone$",
+	"vra_cloud_account_aws$",
+	"vra_cloud_account_azure$",
+	"vra_flavor_profile$",
+	"vra_image_profile$",
+	"vra_load_balancer$",
 }
 
 // skipList
@@ -84,6 +94,11 @@ func GetProvider() *tjconfig.Provider {
 		content_source.Configure,
 		project.Configure,
 		zone.Configure,
+		cloudAccountAWS.Configure,
+		cloudAccountAzure.Configure,
+		flavorProfile.Configure,
+		imageProfile.Configure,
+		loadBalancer.Configure,
 	} {
 		configure(pc)
 	}
