@@ -1,4 +1,4 @@
-package catalog_source_entitlement
+package catalogsourceentitlement
 
 import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/common"

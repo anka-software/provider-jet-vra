@@ -1,4 +1,4 @@
-package catalogitementitlement
+package zone
 
 import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/common"
@@ -7,9 +7,9 @@ import (
 
 // Configure configures individual resources by adding custom ResourceConfigurators.
 func Configure(p *config.Provider) {
-	p.AddResourceConfigurator("vra_catalog_item_entitlement", func(r *config.Resource) {
+	p.AddResourceConfigurator("vra_zone", func(r *config.Resource) {
 		r.Version = common.VersionV1Alpha1
 		r.ExternalName = config.IdentifierFromProvider
-		r.ShortGroup = "catalogitementitlement"
+		r.ShortGroup = "zone"
 	})
 }

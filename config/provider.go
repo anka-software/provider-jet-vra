@@ -20,10 +20,16 @@ import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
 
+	catalog_item_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
+	catalog_source_blueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
+	catalog_source_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
+	content_source "github.com/crossplane-contrib/provider-jet-vra/config/content_source"
+
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
 	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
@@ -36,6 +42,7 @@ import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_ip_range"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_profile"
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
+	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
 
 const (
@@ -56,12 +63,16 @@ var IncludedResources = []string{
 	"vra_catalog_source_entitlement$",
 	"vra_content_source$",
 	"vra_project$",
+
 	"vra_network$",
 	"vra_cloud_account_nsxt$",
 	"vra_cloud_account_gcp$",
 	"vra_machine$",
 	"network_ip_range$",
 	"vra_network_profile$",
+
+	"vra_zone$",
+
 }
 
 // skipList
@@ -92,12 +103,16 @@ func GetProvider() *tjconfig.Provider {
 		catalog_source_entitlement.Configure,
 		content_source.Configure,
 		project.Configure,
+
 		network.Configure,
 		cloud_account_nsxt.Configure,
 		cloud_account_gcp.Configure,
 		machine.Configure,
 		network_ip_range.Configure,
 		network_profile.Configure,
+
+		zone.Configure,
+
 	} {
 		configure(pc)
 	}

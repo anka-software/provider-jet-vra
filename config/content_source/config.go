@@ -1,4 +1,4 @@
-package content_source
+package contentsource
 
 import (
 	"github.com/crossplane-contrib/provider-jet-vra/config/common"

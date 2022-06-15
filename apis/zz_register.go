@@ -35,6 +35,7 @@ import (
 	v1alpha1networkprofile "github.com/crossplane-contrib/provider-jet-vra/apis/networkprofile/v1alpha1"
 	v1alpha1project "github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1"
 	v1alpha1apis "github.com/crossplane-contrib/provider-jet-vra/apis/v1alpha1"
+	v1alpha1zone "github.com/crossplane-contrib/provider-jet-vra/apis/zone/v1alpha1"
 )
 
 func init() {
@@ -53,6 +54,7 @@ func init() {
 		v1alpha1networkprofile.SchemeBuilder.AddToScheme,
 		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
+		v1alpha1zone.SchemeBuilder.AddToScheme,
 	)
 }
 
