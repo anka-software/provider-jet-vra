@@ -19,11 +19,15 @@ package config
 import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
-<<<<<<< HEAD
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudaccountnsxv"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudaccountvmc"
+	"github.com/crossplane-contrib/provider-jet-vra/config/cloudaccountvsphere"
+	"github.com/crossplane-contrib/provider-jet-vra/config/storageprofile"
+	"github.com/crossplane-contrib/provider-jet-vra/config/storageprofileaws"
+	"github.com/crossplane-contrib/provider-jet-vra/config/storageprofileazure"
+
 	"github.com/crossplane-contrib/provider-jet-vra/config/fabric_datastore_vsphere"
 	"github.com/crossplane-contrib/provider-jet-vra/config/fabric_network_vsphere"
-=======
->>>>>>> main
 
 	catalog_item_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
 	catalog_source_blueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
@@ -33,36 +37,25 @@ import (
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-<<<<<<< HEAD
 	"github.com/crossplane-contrib/provider-jet-vra/config/block_device"
 	"github.com/crossplane-contrib/provider-jet-vra/config/block_device_snapshot"
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/fabric_compute"
-=======
-	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
 
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAWS"
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloudAccountAzure"
-	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/flavorProfile"
 	"github.com/crossplane-contrib/provider-jet-vra/config/imageProfile"
 	loadBalancer "github.com/crossplane-contrib/provider-jet-vra/config/loadbalancer"
 
-
-	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
-	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
-	"github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_gcp"
 	"github.com/crossplane-contrib/provider-jet-vra/config/cloud_account_nsxt"
-	"github.com/crossplane-contrib/provider-jet-vra/config/content_source"
-	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/machine"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_ip_range"
 	"github.com/crossplane-contrib/provider-jet-vra/config/network_profile"
 
->>>>>>> main
 	"github.com/crossplane-contrib/provider-jet-vra/config/project"
 	"github.com/crossplane-contrib/provider-jet-vra/config/zone"
 )
@@ -85,14 +78,13 @@ var IncludedResources = []string{
 	"vra_catalog_source_entitlement$",
 	"vra_content_source$",
 	"vra_project$",
-<<<<<<< HEAD
+
 	"vra_zone$",
 	"block_device$",
 	"block_device_snapshot$",
 	"fabric_compute$",
 	"fabric_datastore_vsphere$",
 	"fabric_network_vsphere$",
-=======
 
 	"vra_network$",
 	"vra_cloud_account_nsxt$",
@@ -109,8 +101,12 @@ var IncludedResources = []string{
 	"vra_image_profile$",
 	"vra_load_balancer$",
 
-
->>>>>>> main
+	"vra_cloud_account_nsxv$",
+	"vra_cloud_account_vmc$",
+	"vra_cloud_account_vsphere$",
+	"vra_storage_profile$",
+	"vra_storage_profile_aws$",
+	"vra_storage_profile_azure$",
 }
 
 // skipList
@@ -141,14 +137,13 @@ func GetProvider() *tjconfig.Provider {
 		catalog_source_entitlement.Configure,
 		content_source.Configure,
 		project.Configure,
-<<<<<<< HEAD
+
 		zone.Configure,
 		block_device.Configure,
 		block_device_snapshot.Configure,
 		fabric_compute.Configure,
 		fabric_datastore_vsphere.Configure,
 		fabric_network_vsphere.Configure,
-=======
 
 		network.Configure,
 		cloud_account_nsxt.Configure,
@@ -165,9 +160,12 @@ func GetProvider() *tjconfig.Provider {
 		imageProfile.Configure,
 		loadBalancer.Configure,
 
-
-
->>>>>>> main
+		cloudaccountnsxv.Configure,
+		cloudaccountvmc.Configure,
+		cloudaccountvsphere.Configure,
+		storageprofile.Configure,
+		storageprofileaws.Configure,
+		storageprofileazure.Configure,
 	} {
 		configure(pc)
 	}
