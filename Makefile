@@ -51,7 +51,7 @@ GO111MODULE = on
 # ====================================================================================
 # Setup Images
 
-DOCKER_REGISTRY ?= crossplane
+DOCKER_REGISTRY ?= ankasoftware
 IMAGES = provider-jet-vra provider-jet-vra-controller
 -include build/makelib/image.mk
 
