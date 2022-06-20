@@ -226,6 +226,16 @@ func (in *BlueprintParameters) DeepCopyInto(out *BlueprintParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ProjectIDRef != nil {
+		in, out := &in.ProjectIDRef, &out.ProjectIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.ProjectIDSelector != nil {
+		in, out := &in.ProjectIDSelector, &out.ProjectIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.RequestScopeOrg != nil {
 		in, out := &in.RequestScopeOrg, &out.RequestScopeOrg
 		*out = new(bool)

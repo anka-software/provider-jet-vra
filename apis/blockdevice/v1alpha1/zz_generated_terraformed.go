@@ -25,18 +25,18 @@ import (
 	"github.com/crossplane/terrajet/pkg/resource/json"
 )
 
-// GetTerraformResourceType returns Terraform resource type for this Device
-func (mg *Device) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this BlockDevice
+func (mg *BlockDevice) GetTerraformResourceType() string {
 	return "vra_block_device"
 }
 
-// GetConnectionDetailsMapping for this Device
-func (tr *Device) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this BlockDevice
+func (tr *BlockDevice) GetConnectionDetailsMapping() map[string]string {
 	return nil
 }
 
-// GetObservation of this Device
-func (tr *Device) GetObservation() (map[string]interface{}, error) {
+// GetObservation of this BlockDevice
+func (tr *BlockDevice) GetObservation() (map[string]interface{}, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -45,8 +45,8 @@ func (tr *Device) GetObservation() (map[string]interface{}, error) {
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this Device
-func (tr *Device) SetObservation(obs map[string]interface{}) error {
+// SetObservation for this BlockDevice
+func (tr *BlockDevice) SetObservation(obs map[string]interface{}) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -54,16 +54,16 @@ func (tr *Device) SetObservation(obs map[string]interface{}) error {
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this Device
-func (tr *Device) GetID() string {
+// GetID returns ID of underlying Terraform resource of this BlockDevice
+func (tr *BlockDevice) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this Device
-func (tr *Device) GetParameters() (map[string]interface{}, error) {
+// GetParameters of this BlockDevice
+func (tr *BlockDevice) GetParameters() (map[string]interface{}, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -72,8 +72,8 @@ func (tr *Device) GetParameters() (map[string]interface{}, error) {
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this Device
-func (tr *Device) SetParameters(params map[string]interface{}) error {
+// SetParameters for this BlockDevice
+func (tr *BlockDevice) SetParameters(params map[string]interface{}) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -81,10 +81,10 @@ func (tr *Device) SetParameters(params map[string]interface{}) error {
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// LateInitialize this Device using its observed tfState.
+// LateInitialize this BlockDevice using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *Device) LateInitialize(attrs []byte) (bool, error) {
-	params := &DeviceParameters{}
+func (tr *BlockDevice) LateInitialize(attrs []byte) (bool, error) {
+	params := &BlockDeviceParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -95,22 +95,22 @@ func (tr *Device) LateInitialize(attrs []byte) (bool, error) {
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *Device) GetTerraformSchemaVersion() int {
+func (tr *BlockDevice) GetTerraformSchemaVersion() int {
 	return 0
 }
 
-// GetTerraformResourceType returns Terraform resource type for this DeviceSnapshot
-func (mg *DeviceSnapshot) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this BlockDeviceSnapshot
+func (mg *BlockDeviceSnapshot) GetTerraformResourceType() string {
 	return "vra_block_device_snapshot"
 }
 
-// GetConnectionDetailsMapping for this DeviceSnapshot
-func (tr *DeviceSnapshot) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) GetConnectionDetailsMapping() map[string]string {
 	return nil
 }
 
-// GetObservation of this DeviceSnapshot
-func (tr *DeviceSnapshot) GetObservation() (map[string]interface{}, error) {
+// GetObservation of this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) GetObservation() (map[string]interface{}, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -119,8 +119,8 @@ func (tr *DeviceSnapshot) GetObservation() (map[string]interface{}, error) {
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this DeviceSnapshot
-func (tr *DeviceSnapshot) SetObservation(obs map[string]interface{}) error {
+// SetObservation for this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) SetObservation(obs map[string]interface{}) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -128,16 +128,16 @@ func (tr *DeviceSnapshot) SetObservation(obs map[string]interface{}) error {
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this DeviceSnapshot
-func (tr *DeviceSnapshot) GetID() string {
+// GetID returns ID of underlying Terraform resource of this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this DeviceSnapshot
-func (tr *DeviceSnapshot) GetParameters() (map[string]interface{}, error) {
+// GetParameters of this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) GetParameters() (map[string]interface{}, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -146,8 +146,8 @@ func (tr *DeviceSnapshot) GetParameters() (map[string]interface{}, error) {
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this DeviceSnapshot
-func (tr *DeviceSnapshot) SetParameters(params map[string]interface{}) error {
+// SetParameters for this BlockDeviceSnapshot
+func (tr *BlockDeviceSnapshot) SetParameters(params map[string]interface{}) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -155,10 +155,10 @@ func (tr *DeviceSnapshot) SetParameters(params map[string]interface{}) error {
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// LateInitialize this DeviceSnapshot using its observed tfState.
+// LateInitialize this BlockDeviceSnapshot using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *DeviceSnapshot) LateInitialize(attrs []byte) (bool, error) {
-	params := &DeviceSnapshotParameters{}
+func (tr *BlockDeviceSnapshot) LateInitialize(attrs []byte) (bool, error) {
+	params := &BlockDeviceSnapshotParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -169,6 +169,6 @@ func (tr *DeviceSnapshot) LateInitialize(attrs []byte) (bool, error) {
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *DeviceSnapshot) GetTerraformSchemaVersion() int {
+func (tr *BlockDeviceSnapshot) GetTerraformSchemaVersion() int {
 	return 0
 }

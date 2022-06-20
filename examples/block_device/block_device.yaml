@@ -1,9 +1,0 @@
-apiVersion: block_device.vra.jet.crossplane.io/v1alpha1
-kind: block_device
-metadata:
-  name: vra-block_device-test-01
-spec:
-  forProvider:
-    name: vra-block_device-test-01
-  providerConfigRef:
-    name: default

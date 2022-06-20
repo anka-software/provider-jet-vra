@@ -19,134 +19,134 @@ package v1alpha1
 
 import xpv1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 
-// GetCondition of this Device.
-func (mg *Device) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this BlockDevice.
+func (mg *BlockDevice) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this Device.
-func (mg *Device) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this BlockDevice.
+func (mg *BlockDevice) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetProviderConfigReference of this Device.
-func (mg *Device) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this BlockDevice.
+func (mg *BlockDevice) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 /*
-GetProviderReference of this Device.
+GetProviderReference of this BlockDevice.
 Deprecated: Use GetProviderConfigReference.
 */
-func (mg *Device) GetProviderReference() *xpv1.Reference {
+func (mg *BlockDevice) GetProviderReference() *xpv1.Reference {
 	return mg.Spec.ProviderReference
 }
 
-// GetPublishConnectionDetailsTo of this Device.
-func (mg *Device) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this BlockDevice.
+func (mg *BlockDevice) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this Device.
-func (mg *Device) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this BlockDevice.
+func (mg *BlockDevice) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this Device.
-func (mg *Device) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this BlockDevice.
+func (mg *BlockDevice) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this Device.
-func (mg *Device) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this BlockDevice.
+func (mg *BlockDevice) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetProviderConfigReference of this Device.
-func (mg *Device) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this BlockDevice.
+func (mg *BlockDevice) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 /*
-SetProviderReference of this Device.
+SetProviderReference of this BlockDevice.
 Deprecated: Use SetProviderConfigReference.
 */
-func (mg *Device) SetProviderReference(r *xpv1.Reference) {
+func (mg *BlockDevice) SetProviderReference(r *xpv1.Reference) {
 	mg.Spec.ProviderReference = r
 }
 
-// SetPublishConnectionDetailsTo of this Device.
-func (mg *Device) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this BlockDevice.
+func (mg *BlockDevice) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this Device.
-func (mg *Device) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this BlockDevice.
+func (mg *BlockDevice) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this DeviceSnapshot.
-func (mg *DeviceSnapshot) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this DeviceSnapshot.
-func (mg *DeviceSnapshot) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetProviderConfigReference of this DeviceSnapshot.
-func (mg *DeviceSnapshot) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 /*
-GetProviderReference of this DeviceSnapshot.
+GetProviderReference of this BlockDeviceSnapshot.
 Deprecated: Use GetProviderConfigReference.
 */
-func (mg *DeviceSnapshot) GetProviderReference() *xpv1.Reference {
+func (mg *BlockDeviceSnapshot) GetProviderReference() *xpv1.Reference {
 	return mg.Spec.ProviderReference
 }
 
-// GetPublishConnectionDetailsTo of this DeviceSnapshot.
-func (mg *DeviceSnapshot) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this DeviceSnapshot.
-func (mg *DeviceSnapshot) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this DeviceSnapshot.
-func (mg *DeviceSnapshot) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this DeviceSnapshot.
-func (mg *DeviceSnapshot) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetProviderConfigReference of this DeviceSnapshot.
-func (mg *DeviceSnapshot) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 /*
-SetProviderReference of this DeviceSnapshot.
+SetProviderReference of this BlockDeviceSnapshot.
 Deprecated: Use SetProviderConfigReference.
 */
-func (mg *DeviceSnapshot) SetProviderReference(r *xpv1.Reference) {
+func (mg *BlockDeviceSnapshot) SetProviderReference(r *xpv1.Reference) {
 	mg.Spec.ProviderReference = r
 }
 
-// SetPublishConnectionDetailsTo of this DeviceSnapshot.
-func (mg *DeviceSnapshot) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this DeviceSnapshot.
-func (mg *DeviceSnapshot) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

@@ -25,85 +25,64 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type ConstraintsObservation struct {
+type FlavorMappingObservation struct {
 }
 
-type ConstraintsParameters struct {
+type FlavorMappingParameters struct {
 
-	// An expression of the form "[!]tag-key[:[tag-value]]", used to indicate a constraint match on keys and values of tags.
-	// +kubebuilder:validation:Required
-	Expression *string `json:"expression" tf:"expression,omitempty"`
-
-	// Indicates whether this constraint should be strictly enforced or not.
-	// +kubebuilder:validation:Required
-	Mandatory *bool `json:"mandatory" tf:"mandatory,omitempty"`
-}
-
-type ImageMappingObservation struct {
-	Description *string `json:"description,omitempty" tf:"description,omitempty"`
-
-	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
-
-	ExternalRegionID *string `json:"externalRegionId,omitempty" tf:"external_region_id,omitempty"`
-
-	Organization *string `json:"organization,omitempty" tf:"organization,omitempty"`
-
-	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
-
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	Private *bool `json:"private,omitempty" tf:"private,omitempty"`
-}
-
-type ImageMappingParameters struct {
-
-	// Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification or vRA cloud templates.
 	// +kubebuilder:validation:Optional
-	CloudConfig *string `json:"cloudConfig,omitempty" tf:"cloud_config,omitempty"`
+	CPUCount *float64 `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
 
-	// Constraints that are used to drive placement policies for entities such as image, network, storage, etc. Constraint expressions are matched against tags on existing placement targets.
 	// +kubebuilder:validation:Optional
-	Constraints []ConstraintsParameters `json:"constraints,omitempty" tf:"constraints,omitempty"`
+	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
 
-	// The id of this resource instance.
 	// +kubebuilder:validation:Optional
-	ImageID *string `json:"imageId,omitempty" tf:"image_id,omitempty"`
+	Memory *float64 `json:"memory,omitempty" tf:"memory,omitempty"`
 
-	// A human-friendly image name as seen on the cloud provider side.
-	// +kubebuilder:validation:Optional
-	ImageName *string `json:"imageName,omitempty" tf:"image_name,omitempty"`
-
-	// A human-friendly name of the image mapping.
 	// +kubebuilder:validation:Required
 	Name *string `json:"name" tf:"name,omitempty"`
 }
 
-type ProfileObservation_2 struct {
+type LinksObservation struct {
+	Href *string `json:"href,omitempty" tf:"href,omitempty"`
+
+	Hrefs []*string `json:"hrefs,omitempty" tf:"hrefs,omitempty"`
+
+	Rel *string `json:"rel,omitempty" tf:"rel,omitempty"`
+}
+
+type LinksParameters struct {
+}
+
+type ProfileObservation struct {
+	CloudAccountID *string `json:"cloudAccountId,omitempty" tf:"cloud_account_id,omitempty"`
+
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 
 	ExternalRegionID *string `json:"externalRegionId,omitempty" tf:"external_region_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	Links []LinksObservation `json:"links,omitempty" tf:"links,omitempty"`
+
+	OrgID *string `json:"orgId,omitempty" tf:"org_id,omitempty"`
+
 	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
 
 	UpdatedAt *string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
-type ProfileParameters_2 struct {
+type ProfileParameters struct {
 
-	// A human-friendly description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	ImageMapping []ImageMappingParameters `json:"imageMapping,omitempty" tf:"image_mapping,omitempty"`
+	FlavorMapping []FlavorMappingParameters `json:"flavorMapping,omitempty" tf:"flavor_mapping,omitempty"`
 
-	// A human-friendly name used as an identifier in APIs that support this option.
 	// +kubebuilder:validation:Required
 	Name *string `json:"name" tf:"name,omitempty"`
 
-	// The if of the region for which this profile is defined as in vRealize Automation(vRA).
 	// +kubebuilder:validation:Required
 	RegionID *string `json:"regionId" tf:"region_id,omitempty"`
 }
@@ -111,13 +90,13 @@ type ProfileParameters_2 struct {
 // ProfileSpec defines the desired state of Profile
 type ProfileSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     ProfileParameters_2 `json:"forProvider"`
+	ForProvider     ProfileParameters `json:"forProvider"`
 }
 
 // ProfileStatus defines the observed state of Profile.
 type ProfileStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        ProfileObservation_2 `json:"atProvider,omitempty"`
+	AtProvider        ProfileObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

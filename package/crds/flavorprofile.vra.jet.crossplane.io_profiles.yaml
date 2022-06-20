@@ -64,59 +64,25 @@ spec:
               forProvider:
                 properties:
                   description:
-                    description: A human-friendly description.
                     type: string
-                  imageMapping:
+                  flavorMapping:
                     items:
                       properties:
-                        cloudConfig:
-                          description: Cloud config for this image. This cloud config
-                            will be merged during provisioning with other cloud configurations
-                            such as the bootConfig provided in MachineSpecification
-                            or vRA cloud templates.
+                        cpuCount:
+                          type: number
+                        instanceType:
                           type: string
-                        constraints:
-                          description: Constraints that are used to drive placement
-                            policies for entities such as image, network, storage,
-                            etc. Constraint expressions are matched against tags on
-                            existing placement targets.
-                          items:
-                            properties:
-                              expression:
-                                description: An expression of the form "[!]tag-key[:[tag-value]]",
-                                  used to indicate a constraint match on keys and
-                                  values of tags.
-                                type: string
-                              mandatory:
-                                description: Indicates whether this constraint should
-                                  be strictly enforced or not.
-                                type: boolean
-                            required:
-                            - expression
-                            - mandatory
-                            type: object
-                          type: array
-                        imageId:
-                          description: The id of this resource instance.
-                          type: string
-                        imageName:
-                          description: A human-friendly image name as seen on the
-                            cloud provider side.
-                          type: string
+                        memory:
+                          type: number
                         name:
-                          description: A human-friendly name of the image mapping.
                           type: string
                       required:
                       - name
                       type: object
                     type: array
                   name:
-                    description: A human-friendly name used as an identifier in APIs
-                      that support this option.
                     type: string
                   regionId:
-                    description: The if of the region for which this profile is defined
-                      as in vRealize Automation(vRA).
                     type: string
                 required:
                 - name
@@ -223,11 +189,28 @@ spec:
             properties:
               atProvider:
                 properties:
+                  cloudAccountId:
+                    type: string
                   createdAt:
                     type: string
                   externalRegionId:
                     type: string
                   id:
+                    type: string
+                  links:
+                    items:
+                      properties:
+                        href:
+                          type: string
+                        hrefs:
+                          items:
+                            type: string
+                          type: array
+                        rel:
+                          type: string
+                      type: object
+                    type: array
+                  orgId:
                     type: string
                   owner:
                     type: string

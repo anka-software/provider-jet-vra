@@ -21,15 +21,16 @@ import (
 	_ "embed"
 
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 	blockdevice "github.com/crossplane-contrib/provider-jet-vra/config/block_device"
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
-	catalog_item_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
-	catalog_source_blueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
-	catalog_source_entitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
+	catalogitementitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
+	catalogsourceblueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
+	catalogsourceentitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_entitlement"
 	cloudaccount "github.com/crossplane-contrib/provider-jet-vra/config/cloud_account"
-	content_source "github.com/crossplane-contrib/provider-jet-vra/config/content_source"
+	contentsource "github.com/crossplane-contrib/provider-jet-vra/config/content_source"
 	"github.com/crossplane-contrib/provider-jet-vra/config/deployment"
 	"github.com/crossplane-contrib/provider-jet-vra/config/fabric"
 	flavorprofile "github.com/crossplane-contrib/provider-jet-vra/config/flavor_profile"
@@ -52,34 +53,14 @@ var providerSchema string
 
 // IncludedResources s
 var IncludedResources = []string{
-	"vra_deployment$",
+	"vra_block_device$",
+	"vra_block_device_snapshot$",
 	"vra_blueprint$",
 	"vra_blueprint_version$",
-
 	"vra_catalog_item_entitlement$",
 	"vra_catalog_source_blueprint$",
 	"vra_catalog_source_entitlement$",
 	"vra_content_source$",
-
-	"vra_project$",
-
-	"vra_block_device$",
-	"vra_block_device_snapshot$",
-
-	"vra_fabric_compute$",
-	"vra_fabric_datastore_vsphere$",
-	"vra_fabric_network_vsphere$",
-
-	"vra_network$",
-	"vra_network_ip_range$",
-	"vra_network_profile$",
-	"vra_flavor_profile$",
-	"vra_image_profile$",
-
-	"vra_machine$",
-	"vra_load_balancer$",
-	"vra_zone$",
-
 	"vra_cloud_account_aws$",
 	"vra_cloud_account_azure$",
 	"vra_cloud_account_nsxt$",
@@ -87,11 +68,23 @@ var IncludedResources = []string{
 	"vra_cloud_account_nsxv$",
 	"vra_cloud_account_vmc$",
 	"vra_cloud_account_vsphere$",
-
+	"vra_deployment$",
+	"vra_fabric_compute$",
+	"vra_fabric_datastore_vsphere$",
+	"vra_fabric_network_vsphere$",
+	"vra_flavor_profile$",
+	"vra_image_profile$",
+	"vra_load_balancer$",
+	"vra_machine$",
+	"vra_network$",
+	"vra_network_ip_range$",
+	"vra_network_profile$",
+	"vra_project$",
 	"vra_storage_profile$",
 	"vra_storage_profile_aws$",
 	"vra_storage_profile_azure$",
 	"vra_storage_profile_vsphere$",
+	"vra_zone$",
 }
 
 // skipList
@@ -117,11 +110,11 @@ func GetProvider() *tjconfig.Provider {
 		// add custom config functions
 		blockdevice.Configure,
 		blueprint.Configure,
-		catalog_item_entitlement.Configure,
-		catalog_source_blueprint.Configure,
-		catalog_source_entitlement.Configure,
+		catalogitementitlement.Configure,
+		catalogsourceblueprint.Configure,
+		catalogsourceentitlement.Configure,
 		cloudaccount.Configure,
-		content_source.Configure,
+		contentsource.Configure,
 		deployment.Configure,
 		fabric.Configure,
 		flavorprofile.Configure,

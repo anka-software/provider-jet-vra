@@ -2,14 +2,16 @@ apiVersion: blueprint.vra.jet.crossplane.io/v1alpha1
 kind: Blueprint
 metadata:
   name: vra-blueprint-test-01
+  namespace: crossplane-system
 spec:
   forProvider:
     name: vra-blueprint-test-01
     description: "Managed by Crossplane vRA Jet provider"
 
-    projectId: 1622eaa5-1fa6-4b67-9546-915173b1a570
+    projectIdRef:
+      name: vra-project-test
 
     content: "formatVersion: 1"
 
   providerConfigRef:
-    name: default
+    name: allianz-next-creds-jet

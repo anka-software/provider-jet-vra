@@ -10,5 +10,8 @@ guidelines and responsibilities for the steering committee and maintainers.
 
 ## Maintainers
 
-* Maintainer 1 <maintainer1@acme.org> ([maintainer1](https://github.com/maintainer1))
-* Maintainer 2 <maintainer2@acme.org> ([maintainer1](https://github.com/maintainer2))
+* Umit Demirtas <umit@anka-software.com> ([umitdemirtas](https://github.com/umitdemirtas))
+* Abdurrahman Osman
+* Ayberk Dikcinar
+* Caner Sermet
+* Yagmur Ozden

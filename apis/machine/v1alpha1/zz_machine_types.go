@@ -175,8 +175,15 @@ type MachineParameters struct {
 	// +kubebuilder:validation:Optional
 	Nics []NicsParameters `json:"nics,omitempty" tf:"nics,omitempty"`
 
-	// +kubebuilder:validation:Required
-	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1.Project
+	// +kubebuilder:validation:Optional
+	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ProjectIDRef *v1.Reference `json:"projectIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	ProjectIDSelector *v1.Selector `json:"projectIdSelector,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
 	Tags []TagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -55,7 +55,7 @@ type VersionObservation struct {
 
 type VersionParameters struct {
 
-	// +crossplane:generate:reference:type=github.com/crossplane-contrib/provider-jet-vra/apis/blueprint/v1alpha1.Blueprint
+	// +crossplane:generate:reference:type=Blueprint
 	// +kubebuilder:validation:Optional
 	BlueprintID *string `json:"blueprintId,omitempty" tf:"blueprint_id,omitempty"`
 

@@ -19,13 +19,14 @@ package v1alpha1
 
 import (
 	"context"
+	v1alpha1 "github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-// ResolveReferences of this Device.
-func (mg *Device) ResolveReferences(ctx context.Context, c client.Reader) error {
+// ResolveReferences of this BlockDevice.
+func (mg *BlockDevice) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
@@ -37,8 +38,8 @@ func (mg *Device) ResolveReferences(ctx context.Context, c client.Reader) error 
 		Reference:    mg.Spec.ForProvider.ProjectIDRef,
 		Selector:     mg.Spec.ForProvider.ProjectIDSelector,
 		To: reference.To{
-			List:    &ProjectList{},
-			Managed: &Project{},
+			List:    &v1alpha1.ProjectList{},
+			Managed: &v1alpha1.Project{},
 		},
 	})
 	if err != nil {
@@ -50,8 +51,8 @@ func (mg *Device) ResolveReferences(ctx context.Context, c client.Reader) error 
 	return nil
 }
 
-// ResolveReferences of this DeviceSnapshot.
-func (mg *DeviceSnapshot) ResolveReferences(ctx context.Context, c client.Reader) error {
+// ResolveReferences of this BlockDeviceSnapshot.
+func (mg *BlockDeviceSnapshot) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
@@ -63,8 +64,8 @@ func (mg *DeviceSnapshot) ResolveReferences(ctx context.Context, c client.Reader
 		Reference:    mg.Spec.ForProvider.BlockDeviceIDRef,
 		Selector:     mg.Spec.ForProvider.BlockDeviceIDSelector,
 		To: reference.To{
-			List:    &DeviceList{},
-			Managed: &Device{},
+			List:    &BlockDeviceList{},
+			Managed: &BlockDevice{},
 		},
 	})
 	if err != nil {

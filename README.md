@@ -1,9 +1,9 @@
-# Terrajet VRA Provider
+# Terrajet vRA Provider
 
 `provider-jet-vra` is a [Crossplane](https://crossplane.io/) provider that
 is built using [Terrajet](https://github.com/crossplane/terrajet) code
 generation tools and exposes XRM-conformant managed resources for the
-VRA API.
+[vRA API](https://developer.vmware.com/apis).
 
 ## Getting Started
 
