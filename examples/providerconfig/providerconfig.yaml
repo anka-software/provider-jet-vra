@@ -1,7 +1,7 @@
 apiVersion: vra.jet.crossplane.io/v1alpha1
 kind: ProviderConfig
 metadata:
-  name: allianz-next-creds-jet
+  name: provider-vra-jet-config
 spec:
   credentials:
     source: Secret

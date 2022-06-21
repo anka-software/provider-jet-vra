@@ -6,7 +6,7 @@ metadata:
   labels:
     app: crossplane-provider-jet-vra
 spec:
-  image: crossplane/provider-jet-vra-controller:v0.1.0
+  image: ankasoftware/provider-jet-vra-controller
   args: ["-d"]
 ---
 apiVersion: pkg.crossplane.io/v1
@@ -14,6 +14,6 @@ kind: Provider
 metadata:
   name: crossplane-provider-jet-vra
 spec:
-  package: crossplane/provider-jet-vra:v0.1.0
+  package: ankasoftware/provider-jet-vra
   controllerConfigRef:
     name: jet-vra-config

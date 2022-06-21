@@ -21,8 +21,6 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
-	blockdevice "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blockdevice/blockdevice"
-	blockdevicesnapshot "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blockdevice/blockdevicesnapshot"
 	blueprint "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/blueprint"
 	version "github.com/crossplane-contrib/provider-jet-vra/internal/controller/blueprint/version"
 	itementitlement "github.com/crossplane-contrib/provider-jet-vra/internal/controller/catalogitementitlement/itementitlement"
@@ -60,8 +58,6 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		blockdevice.Setup,
-		blockdevicesnapshot.Setup,
 		blueprint.Setup,
 		version.Setup,
 		itementitlement.Setup,

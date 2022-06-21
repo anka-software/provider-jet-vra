@@ -20,7 +20,7 @@ spec:
     #sharedResources: False
 
   providerConfigRef:
-    name: allianz-next-creds-jet
+    name: provider-vra-jet-config
 
 
       #items:

@@ -22,8 +22,7 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/crossplane-contrib/provider-jet-vra/apis/blockdevice/v1alpha1"
-	v1alpha1blueprint "github.com/crossplane-contrib/provider-jet-vra/apis/blueprint/v1alpha1"
+	v1alpha1 "github.com/crossplane-contrib/provider-jet-vra/apis/blueprint/v1alpha1"
 	v1alpha1catalogitementitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogitementitlement/v1alpha1"
 	v1alpha1catalogsourceblueprint "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceblueprint/v1alpha1"
 	v1alpha1catalogsourceentitlement "github.com/crossplane-contrib/provider-jet-vra/apis/catalogsourceentitlement/v1alpha1"
@@ -46,7 +45,6 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
-		v1alpha1blueprint.SchemeBuilder.AddToScheme,
 		v1alpha1catalogitementitlement.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceblueprint.SchemeBuilder.AddToScheme,
 		v1alpha1catalogsourceentitlement.SchemeBuilder.AddToScheme,

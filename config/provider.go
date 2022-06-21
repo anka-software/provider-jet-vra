@@ -24,7 +24,6 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	blockdevice "github.com/crossplane-contrib/provider-jet-vra/config/block_device"
 	"github.com/crossplane-contrib/provider-jet-vra/config/blueprint"
 	catalogitementitlement "github.com/crossplane-contrib/provider-jet-vra/config/catalog_item_entitlement"
 	catalogsourceblueprint "github.com/crossplane-contrib/provider-jet-vra/config/catalog_source_blueprint"
@@ -53,8 +52,8 @@ var providerSchema string
 
 // IncludedResources s
 var IncludedResources = []string{
-	"vra_block_device$",
-	"vra_block_device_snapshot$",
+	// "vra_block_device$",
+	// "vra_block_device_snapshot$",
 	"vra_blueprint$",
 	"vra_blueprint_version$",
 	"vra_catalog_item_entitlement$",
@@ -108,7 +107,7 @@ func GetProvider() *tjconfig.Provider {
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		blockdevice.Configure,
+		// blockdevice.Configure,
 		blueprint.Configure,
 		catalogitementitlement.Configure,
 		catalogsourceblueprint.Configure,

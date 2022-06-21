@@ -12,7 +12,7 @@ func Configure(p *config.Provider) {
 		r.Version = common.VersionV1Alpha1
 		r.ExternalName = config.IdentifierFromProvider
 		r.ShortGroup = "blockdevice"
-		r.Kind = "BlockDevice"
+		// r.Kind = "BlockDevice"
 
 		r.References["project_id"] = config.Reference{
 			Type: "github.com/crossplane-contrib/provider-jet-vra/apis/project/v1alpha1.Project",
@@ -23,7 +23,7 @@ func Configure(p *config.Provider) {
 		r.Version = common.VersionV1Alpha1
 		r.ExternalName = config.IdentifierFromProvider
 		r.ShortGroup = "blockdevice"
-		r.Kind = "BlockDeviceSnapshot"
+		// r.Kind = "BlockDeviceSnapshot"
 
 		r.References["block_device_id"] = config.Reference{
 			Type: "BlockDevice",
